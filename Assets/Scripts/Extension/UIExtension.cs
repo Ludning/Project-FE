@@ -6,9 +6,15 @@ namespace UI.Extension
 {
     public static class UIExtension
     {
+        /// <summary>
+        /// rectTransform 의 스크린 좌표를 월드좌표originPos 의 투영 위치로 변경.
+        /// </summary>
+        /// <param name="rectTransform"></param>
+        /// <param name="originPos"></param>
         public static void SetUIPos_WorldToScreenPos(this RectTransform rectTransform, Vector3 originPos)
         {
-            Camera cam = GetHighestPriorityCamera();
+            //Camera cam = GetHighestPriorityCamera();
+            Camera cam = Camera.main;
 
             Vector2 screenSize = new Vector2(Screen.width, Screen.height);
             Vector3 screenPosition = cam.WorldToScreenPoint(originPos);

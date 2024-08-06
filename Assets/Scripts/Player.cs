@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] Charactor controlledCharactor;
 
     IInteractable onMouseObject;
+    bool _onInteration;
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerInput_OnUpdate();
-        SetLookTargetPos_OnUpdate();
+        MousePosCheck_OnUpdate();
         MouseClickCheck_OnUpdate();
     }    
 
@@ -51,25 +52,28 @@ public class Player : MonoBehaviour
         onInput_Move?.Invoke(inputVector_Move);
     }
 
-    void SetLookTargetPos_OnUpdate()
+    void MousePosCheck_OnUpdate()
     {        
         Vector3 mousePosition = Input.mousePosition;
         
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);                
-        
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+
+        if (_onInteration)
         {
-            if(hit.collider.TryGetComponent(out onMouseObject))
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                lookTargetPosVector = onMouseObject.GetPos();
-                //Debug.Log($"{onMouseObject.GetData()} 선택");
+                if (hit.collider.TryGetComponent(out onMouseObject))
+                {
+                    lookTargetPosVector = onMouseObject.GetPos();
+                    //Debug.Log($"{onMouseObject.GetData()} 선택");
+                }
+                else
+                {
+                    onMouseObject = null;
+                    lookTargetPosVector = hit.point;
+                }
+                onLookTargetPosSet?.Invoke(lookTargetPosVector);
             }
-            else
-            {
-                onMouseObject = null;
-                lookTargetPosVector = hit.point;
-            }            
-            onLookTargetPosSet?.Invoke(lookTargetPosVector);
         }
     }
 
@@ -77,10 +81,12 @@ public class Player : MonoBehaviour
     {
         if(Input.GetMouseButton(1))
         {
+            _onInteration = true;
             Command_TryInteract();
         }
         if(Input.GetMouseButtonUp(1))
         {
+            _onInteration = false;
             Command_EndInteract();
         }
     }
