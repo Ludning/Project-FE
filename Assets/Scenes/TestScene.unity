@@ -1358,7 +1358,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1000, y: 1, z: 1000}
+  m_LocalScale: {x: 10000, y: 1, z: 10000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1509,7 +1509,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1133071687895540700, guid: 8188e484434f45b4ca633338f2f8be7f, type: 3}
       propertyPath: m_Name
-      value: CopperOre
+      value: CopperLode
       objectReference: {fileID: 0}
     - target: {fileID: 3593473047108376448, guid: 8188e484434f45b4ca633338f2f8be7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1606,13 +1606,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8542323872652785472, guid: 3b5377e852013454a9097b302b68fdd8, type: 3}
       propertyPath: m_Name
-      value: IronOre
+      value: IronLode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b5377e852013454a9097b302b68fdd8, type: 3}
+--- !u!1001 &7643275765013191652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6245761265512777145, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f8c11f1e532c612419780b9f1181d0a6, type: 2}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259295345125801071, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629555022193419210, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
+      propertyPath: m_Name
+      value: CoalLode
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3be08ed0775c9c14ca3239f59ff5938c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1626,5 +1687,6 @@ SceneRoots:
   - {fileID: 1723150504}
   - {fileID: 4433323822277990711}
   - {fileID: 3426978520265608548}
+  - {fileID: 7643275765013191652}
   - {fileID: 643594633}
   - {fileID: 347385293}

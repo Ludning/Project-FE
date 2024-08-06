@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8483101530884699778}
   - component: {fileID: 1367066941371238603}
   m_Layer: 0
-  m_Name: IronOre
+  m_Name: IronLode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
