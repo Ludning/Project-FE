@@ -1,72 +1,29 @@
 using System.ComponentModel;
+using UnityEngine;
 
 public class PlayerViewModel
 {
-    long _credit;
-    int _superCredit;
-    int _fuel;
-    int _reFuelRemaning;
-    int _curPrmStage;
-    int _curSecStage;
+    string _onMouseObjectName = "";
+    Vector3 _mousePosition;
 
-    public long Credit
+    public string OnMouseObjectName
     {
-        get { return _credit; }
+        get { return _onMouseObjectName; }
         set
         {
-            if (_credit == value) return;
-            _credit = value;
-            OnPropertyChanged(nameof(Credit));
+            if (_onMouseObjectName == value) return;
+            _onMouseObjectName = value;
+            OnPropertyChanged(nameof(OnMouseObjectName));
         }
     }
-    public int SuperCredit
+    public Vector3 MousePosition
     {
-        get { return _superCredit; }
+        get { return _mousePosition; }
         set
         {
-            if (_superCredit == value) return;
-            _superCredit = value;
-            OnPropertyChanged(nameof(SuperCredit));
-        }
-    }
-    public int Fuel
-    {
-        get { return _fuel; }
-        set
-        {
-            if (_fuel == value) return;
-            _fuel = value;
-            OnPropertyChanged(nameof(Fuel));
-        }
-    }
-    public int ReFuelRemaning
-    {
-        get { return _reFuelRemaning; }
-        set
-        {            
-            _reFuelRemaning = value;
-            OnPropertyChanged(nameof(ReFuelRemaning));
-        }
-    }
-
-    public int CurPrmStage
-    {
-        get { return _curPrmStage; }
-        set
-        {
-            if (_curPrmStage == value) return;
-            _curPrmStage = value;
-            OnPropertyChanged(nameof(CurPrmStage));
-        }
-    }
-    public int CurSecStage
-    {
-        get { return _curSecStage; }
-        set
-        {
-            if (_curSecStage == value) return;
-            _curSecStage = value;
-            OnPropertyChanged(nameof(CurSecStage));
+            if (_mousePosition == value) return;
+            _mousePosition = value;
+            OnPropertyChanged(nameof(MousePosition));
         }
     }
 

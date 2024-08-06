@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : SceneSingleton<Player>
 {
     public Vector2 inputVector_Move { get; private set; }
     public Vector3 lookTargetPosVector { get; private set; }
 
     Action<Vector2> onInput_Move;
-    Action<Vector3> onLookTargetPosSet;
+    public Action<Vector3> OnLookTargetPosSet;
+    public Action<string> OnMouseObjectNameChanged;
 
     [SerializeField] Charactor controlledCharactor;
 
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         onInput_Move += Command_CharactorMove;
-        onLookTargetPosSet += Command_SetCharactorLookPos;
+        OnLookTargetPosSet += Command_SetCharactorLookPos;
     }
     // Update is called once per frame
     void Update()
@@ -51,29 +52,29 @@ public class Player : MonoBehaviour
         inputVector_Move = inputVector_Move.normalized;
         onInput_Move?.Invoke(inputVector_Move);
     }
-
+    
     void MousePosCheck_OnUpdate()
-    {        
+    {
         Vector3 mousePosition = Input.mousePosition;
-        
+
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
-        if (_onInteration)
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            string onMouseObjectName = null;
+
+            if (hit.collider.TryGetComponent(out onMouseObject))
             {
-                if (hit.collider.TryGetComponent(out onMouseObject))
-                {
-                    lookTargetPosVector = onMouseObject.GetPos();
-                    //Debug.Log($"{onMouseObject.GetData()} º±≈√");
-                }
-                else
-                {
-                    onMouseObject = null;
-                    lookTargetPosVector = hit.point;
-                }
-                onLookTargetPosSet?.Invoke(lookTargetPosVector);
+                lookTargetPosVector = onMouseObject.GetPos();
+                onMouseObjectName = onMouseObject.GetName();                
             }
+            else
+            {
+                onMouseObject = null;                
+                lookTargetPosVector = hit.point;
+            }
+            OnMouseObjectNameChanged?.Invoke(onMouseObjectName);
+            OnLookTargetPosSet?.Invoke(lookTargetPosVector);
         }
     }
 

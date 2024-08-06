@@ -1,43 +1,35 @@
+using UnityEditor;
+using UnityEngine;
+
 namespace ViewModel.Extensions
 {
     public static class PlayerViewModelExtension
     {
-        public static void Register_OnRefreshViewModel(this PlayerViewModel vm)
+        public static void Register_OnMouseObjectNameChanged(this PlayerViewModel vm)
         {
-           // UserData.Instance.Register_OnRefreshViewModel(vm.OnRefreshViewModel);
+            Player.Instance.OnMouseObjectNameChanged += vm.OnMouseObjectNameChanged;
+            Player.Instance.OnLookTargetPosSet += vm.OnMousePosChanged;
         }
 
-        public static void UnRegister_OnRefreshViewModel(this PlayerViewModel vm)
+        public static void UnRegister_OnMouseObjectNameChanged(this PlayerViewModel vm)
         {
-            //UserData.Instance.UnRegister_OnRefreshViewModel(vm.OnRefreshViewModel);
+            Player.Instance.OnMouseObjectNameChanged -= vm.OnMouseObjectNameChanged;
+            Player.Instance.OnLookTargetPosSet -= vm.OnMousePosChanged;
         }
 
-        public static void Register_OnRefuelRemaningChange(this PlayerViewModel vm)
+        public static void Refresh_OnMouseObjectNameChanged(this PlayerViewModel vm)
         {
-            //UserData.Instance.Register_OnRefuelRemaningChange(vm.OnRefuelRemaningChange);
+            vm.OnMouseObjectNameChanged(null);
         }
 
-        public static void UnRegister_OnRefuelRemaningChange(this PlayerViewModel vm)
-        {
-            //UserData.Instance.UnRegister_OnRefuelRemaningChange(vm.OnRefuelRemaningChange);
-        }
 
-        public static void RefreshViewModel_OnInit(this PlayerViewModel vm)
+        public static void OnMouseObjectNameChanged(this PlayerViewModel vm, string objectName)//콜백
         {
-            //UserData.Instance.RefreshViewModel();
+            vm.OnMouseObjectName = objectName;
         }
-
-        //public static void OnRefreshViewModel(this UserDataViewModel vm, UserData data)//콜백
-        //{
-        //    vm.Credit = data.Credit;
-        //    vm.SuperCredit = data.SuperCredit;
-        //    vm.Fuel = data.Fuel;
-        //    vm.CurPrmStage = data.CurPrmStage;
-        //    vm.CurSecStage = data.CurSecStage;
-        //}
-        public static void OnRefuelRemaningChange(this PlayerViewModel vm, int reFuelRemaning)//콜백
+        public static void OnMousePosChanged(this PlayerViewModel vm, Vector3 mousePos)//콜백
         {
-            vm.ReFuelRemaning = reFuelRemaning;
+            vm.MousePosition = mousePos;
         }
     }
 }
